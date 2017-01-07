@@ -22,6 +22,6 @@ public protocol ImageDownloader {
      - parameter url:        URL to download image from.
      - parameter completion: Callback handler that gets invoked after the download is complete.
      */
-    func downloadImageAtURL(_ url: URL, completion: ImageDownloaderCompletion)
+    func downloadImage(from url: URL, completion: @escaping ImageDownloaderCompletion)
     
 }

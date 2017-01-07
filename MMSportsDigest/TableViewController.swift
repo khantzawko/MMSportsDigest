@@ -50,7 +50,7 @@ class TableViewController: UITableViewController {
         tableView.tableHeaderView = nil
         tableView.addSubview(headerView)
 
-        let effectiveHeight = kTableViewHeaderHeight - kTableHeaderCutAway / 2
+        let effectiveHeight = kTableViewHeaderHeight - kTableHeaderCutAway
         tableView.contentInset = UIEdgeInsets(top: effectiveHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -effectiveHeight)
         
@@ -195,20 +195,16 @@ class TableViewController: UITableViewController {
         }
     }
     
-//    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//
-//    }
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateHeaderView()
     }
     
     func updateHeaderView() {
-        let effectiveHeight = kTableViewHeaderHeight - kTableHeaderCutAway / 2
+        let effectiveHeight = kTableViewHeaderHeight - kTableHeaderCutAway
         var headerRect = CGRect(x: 0, y: -effectiveHeight, width: tableView.bounds.width, height: kTableViewHeaderHeight)
         if tableView.contentOffset.y < -effectiveHeight {
             headerRect.origin.y = tableView.contentOffset.y
-            headerRect.size.height = -tableView.contentOffset.y + kTableHeaderCutAway / 2
+            headerRect.size.height = -tableView.contentOffset.y + kTableHeaderCutAway
         }
         headerView.frame = headerRect
         
@@ -221,10 +217,12 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let item = items[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsItemCell
+        
         cell.newsItem = item
+        cell.categoryLabelTopConstraint.constant = (indexPath.row == 0) ? 20 : 1
+        
         return cell
     }
     

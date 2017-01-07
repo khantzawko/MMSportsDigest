@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// View controller for displaying a single photo.
 internal final class ImageViewController: UIViewController {
     
     fileprivate struct Constants {
@@ -28,15 +29,15 @@ internal final class ImageViewController: UIViewController {
             }
         }
     }
-    
+    private(set) var imageView: UIImageView?
+
     let index: Int
     
     // MARK: - Private properties
     
-    fileprivate var activityIndicatorColor: UIColor?
+    private var activityIndicatorColor: UIColor?
     
-    fileprivate var imageView: UIImageView?
-    fileprivate var scrollView: UIScrollView? {
+    private var scrollView: UIScrollView? {
         didSet {
             guard let scrollView = scrollView else {
                 return
@@ -50,13 +51,13 @@ internal final class ImageViewController: UIViewController {
             scrollView.maximumZoomScale = Constants.MaximumZoomScale
         }
     }
-    fileprivate var activityIndicatorView: UIActivityIndicatorView? {
+    private var activityIndicatorView: UIActivityIndicatorView? {
         didSet {
             activityIndicatorView?.color = activityIndicatorColor
         }
     }
     
-    fileprivate var effectiveImageSize: CGSize?
+    private var effectiveImageSize: CGSize?
     
     // MARK: - Init/Deinit
     
@@ -74,9 +75,47 @@ internal final class ImageViewController: UIViewController {
     
     // MARK: - Override functions
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setupDesign()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { (_) in
+            let oldSize = self.scrollView?.bounds.size
+            let newSize = size
+            
+            self.scrollView?.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+            
+            if oldSize != newSize {
+                self.resetImageView()
+            }
+            }, completion: nil)
+    }
+    
+    // MARK: - Instance functions
+    
+    /**
+     Resets and re-centers the image view.
+     */
+    func resetImageView() {
+        scrollView?.zoomScale = Constants.MinimumZoomScale
+        
+        calculateEffectiveImageSize()
+        if let effectiveImageSize = effectiveImageSize {
+            imageView?.frame = CGRect(x: 0, y: 0, width: effectiveImageSize.width, height: effectiveImageSize.height)
+            scrollView?.contentSize = effectiveImageSize
+        }
+        
+        centerImage()
+    }
+    
+    // MARK: - Private functions
+    
+    private func setupDesign() {
         let scrollView = UIScrollView(frame: view.bounds)
         scrollView.delegate = self
         view.addSubview(scrollView)
@@ -123,41 +162,7 @@ internal final class ImageViewController: UIViewController {
         setupTapGestureRecognizer()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        coordinator.animate(alongsideTransition: { (_) in
-            let oldSize = self.scrollView?.bounds.size
-            let newSize = size
-            
-            self.scrollView?.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-            
-            if oldSize != newSize {
-                self.resetImageView()
-            }
-            }, completion: nil)
-    }
-    
-    // MARK: - Instance functions
-    
-    /**
-     Resets and re-centers the image view.
-     */
-    func resetImageView() {
-        scrollView?.zoomScale = Constants.MinimumZoomScale
-        
-        calculateEffectiveImageSize()
-        if let effectiveImageSize = effectiveImageSize {
-            imageView?.frame = CGRect(x: 0, y: 0, width: effectiveImageSize.width, height: effectiveImageSize.height)
-            scrollView?.contentSize = effectiveImageSize
-        }
-        
-        centerImage()
-    }
-    
-    // MARK: - Private functions
-    
-    fileprivate func setupTapGestureRecognizer() {
+    private func setupTapGestureRecognizer() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.didDoubleTap(_:)))
         tapGestureRecognizer.numberOfTouchesRequired = 1
         tapGestureRecognizer.numberOfTapsRequired = 2 // Only allow double tap.
@@ -165,7 +170,7 @@ internal final class ImageViewController: UIViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    fileprivate func calculateEffectiveImageSize() {
+    private func calculateEffectiveImageSize() {
         guard
             let image = image,
             let scrollView = scrollView else {
@@ -210,7 +215,7 @@ internal final class ImageViewController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
     }
     
-    @objc fileprivate func didDoubleTap(_ sender: UITapGestureRecognizer) {
+    @objc private func didDoubleTap(_ sender: UITapGestureRecognizer) {
         guard
             let effectiveImageSize = effectiveImageSize,
             let imageView = imageView,
@@ -233,14 +238,16 @@ internal final class ImageViewController: UIViewController {
         
         if scrollView.zoomScale > scrollView.minimumZoomScale {
             // Zoom out if the image was zoomed in at all.
-            UIView.animate(withDuration: Constants.ZoomAnimationDuration,
-                                       delay: 0,
-                                       options: [],
-                                       animations: {
-                                        scrollView.zoomScale = scrollView.minimumZoomScale
-                                        self.centerImage()
+            UIView.animate(
+                withDuration: Constants.ZoomAnimationDuration,
+                delay: 0,
+                options: [],
+                animations: {
+                    scrollView.zoomScale = scrollView.minimumZoomScale
+                    self.centerImage()
                 },
-                                       completion: nil)
+                completion: nil
+            )
         } else {
             // Otherwise, zoom into the location of the tap point.
             let width = scrollViewSize.width / scrollView.maximumZoomScale
@@ -252,19 +259,25 @@ internal final class ImageViewController: UIViewController {
             
             let zoomRect = CGRect(x: originX, y: originY, width: width, height: height)
             
-            UIView.animate(withDuration: Constants.ZoomAnimationDuration,
-                                       delay: 0,
-                                       options: [],
-                                       animations: {
-                                        scrollView.zoom(to: zoomRect.enclose(imageView.bounds), animated: false)
+            UIView.animate(
+                withDuration: Constants.ZoomAnimationDuration,
+                delay: 0,
+                options: [],
+                animations: {
+                    scrollView.zoom(to: zoomRect.enclose(imageView.bounds), animated: false)
                 },
-                                       completion: { (_) in
-                                        self.centerImage()
-            })
+                completion: { (_) in
+                    self.centerImage()
+                }
+            )
         }
     }
     
 }
+
+// MARK: - Protocol conformance
+
+// MARK: UIScrollViewDelegate
 
 extension ImageViewController: UIScrollViewDelegate {
     

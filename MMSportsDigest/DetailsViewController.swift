@@ -11,7 +11,7 @@ import Firebase
 import Optik
 
 private let kTableViewHeaderHeight: CGFloat = 350.0
-private let kTableHeaderCutAway: CGFloat = 45.0
+private let kTableHeaderCutAway: CGFloat = 0.0
 
 class DetailsViewController: UITableViewController, UIWebViewDelegate {
     
@@ -85,7 +85,11 @@ class DetailsViewController: UITableViewController, UIWebViewDelegate {
 
     
     func imageTapped(sender: UITapGestureRecognizer) {
-        let imageViewer = Optik.imageViewerWithImages([headlineImage.image!], initialImageDisplayIndex: 0, dismissButtonImage: UIImage(named: "DismissIcon"), dismissButtonPosition: .topTrailing)
+        let imageViewer = Optik.imageViewer(withImages: [headlineImage.image!],
+                                            initialImageDisplayIndex: 0,
+                                            delegate: self,
+                                            dismissButtonImage: UIImage(named: "DismissIcon"), 
+                                            dismissButtonPosition: .topTrailing)
 
         present(imageViewer, animated: true, completion: nil)
     }
@@ -187,6 +191,17 @@ class DetailsViewController: UITableViewController, UIWebViewDelegate {
             return true
         }
     }
+}
+
+extension DetailsViewController: ImageViewerDelegate {
+    
+    func transitionImageView(for index: Int) -> UIImageView {
+        return headlineImage
+    }
+
+    func imageViewerDidDisplayImage(at index: Int) {
+    }
+    
 }
 
 extension UIColor {

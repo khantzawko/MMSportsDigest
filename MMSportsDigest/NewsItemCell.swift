@@ -13,6 +13,7 @@ class NewsItemCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var categoryLabelTopConstraint: NSLayoutConstraint!
     
     var newsItem: NewsItem? {
         

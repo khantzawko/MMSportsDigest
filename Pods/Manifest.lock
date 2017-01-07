@@ -40,7 +40,17 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher
-  - Optik
+  - Optik (from `https://github.com/prolificinteractive/optik`, branch `swift-3`)
+
+EXTERNAL SOURCES:
+  Optik:
+    :branch: swift-3
+    :git: https://github.com/prolificinteractive/optik
+
+CHECKOUT OPTIONS:
+  Optik:
+    :commit: 661ab16ff35d87d1ec7a644d4b44d81d16d00788
+    :git: https://github.com/prolificinteractive/optik
 
 SPEC CHECKSUMS:
   Firebase: fdbecadb7b5cbef2774852d4fa659b9daf11f2af
@@ -56,6 +66,6 @@ SPEC CHECKSUMS:
   Kingfisher: 6c67e3e57f2d81a9cfdfa25052cd86f33ceac9bb
   Optik: 8d3d810572388ef52b7b7ca777a3fc1e52a452ae
 
-PODFILE CHECKSUM: 22478ed9b8132d7baca28f0d9217858f4891341c
+PODFILE CHECKSUM: 56480f8512839490e80b560b6cc6d9980e57a22b
 
 COCOAPODS: 1.0.1

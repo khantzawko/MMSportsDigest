@@ -11,8 +11,8 @@ import UIKit
 /**
  Defines and encapulates various image data types.
  
- - Local:  Local images.
- - Remote: Remote images that can be downloaded from specified URLs using given image downloader.
+ - local:  Local images.
+ - remote: Remote images that can be downloaded from specified URLs using given image downloader.
  */
 internal enum ImageData {
     
