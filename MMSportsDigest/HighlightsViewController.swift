@@ -19,7 +19,7 @@ class HighlightsViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var headlineImage: UIImageView!
     
-    let highlightsRef = FIRDatabase.database().reference().child("Highlights")
+    let highlightsRef = Database.database().reference().child("Highlights")
     var highlightsVidsOnStart = 1
     var highlightsVidsOnScroll = 1
     var loadFirst: Bool = false
@@ -82,7 +82,7 @@ class HighlightsViewController: UITableViewController {
     
     func updateNewsFeedOnLoad() {
         
-        highlightsRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(highlightsVidsOnStart)).observe(.childAdded, with: {(snapshot: FIRDataSnapshot) in
+        highlightsRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(highlightsVidsOnStart)).observe(.childAdded, with: {(snapshot: DataSnapshot) in
             
             var postDict = snapshot.value as! [String : AnyObject]
             
@@ -102,7 +102,7 @@ class HighlightsViewController: UITableViewController {
         
         highlightsVidsOnStart = items.count + highlightsVidsOnScroll
         
-        highlightsRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(highlightsVidsOnStart)).observeSingleEvent(of: .value, with: {(snapshot: FIRDataSnapshot) in
+        highlightsRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(highlightsVidsOnStart)).observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
             
             var newPage = [HightlightsItem]()
             

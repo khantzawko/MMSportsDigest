@@ -10,7 +10,6 @@ import UIKit
 
 class MenuViewController: UITableViewController {
     
-
     var menus = ["Sports Digest","Highlights","Settings","About Us","Feedback","Made with 💌 in Rangoon"]
     var menusLabels = [UILabel]()
 

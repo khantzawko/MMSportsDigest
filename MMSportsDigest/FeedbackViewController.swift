@@ -19,7 +19,7 @@ class FeedbackViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     
-    let userFeedbackRef = FIRDatabase.database().reference().child("UserFeedback")
+    let userFeedbackRef = Database.database().reference().child("UserFeedback")
     let staticUserFeedback = String()
     let currentDateTime = NSDate()
 
@@ -198,7 +198,7 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

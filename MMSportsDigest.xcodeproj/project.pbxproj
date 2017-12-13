@@ -19,6 +19,7 @@
 		1449BF651DBB8A47000A0FA9 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449BF641DBB8A47000A0FA9 /* MenuItemCell.swift */; };
 		1476B7781DBEBE39001F5C8F /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476B7771DBEBE39001F5C8F /* FeedbackViewController.swift */; };
 		14881A211D955595001FBFE0 /* DetailsNewsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14881A201D955595001FBFE0 /* DetailsNewsItemCell.swift */; };
+		14B048A81E6B30D200115F9E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B048A71E6B30D200115F9E /* Kingfisher.framework */; };
 		14CBCFB01D7CAFC700951E8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14CBCFAF1D7CAFC700951E8E /* GoogleService-Info.plist */; };
 		14E7448F1DC29EFF002CFDA9 /* PrismMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7448E1DC29EFF002CFDA9 /* PrismMediaCell.swift */; };
 		14E98E2A1D9D833B0055055D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E98E291D9D833B0055055D /* LaunchScreen.storyboard */; };
@@ -70,6 +71,8 @@
 		1449BF641DBB8A47000A0FA9 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		1476B7771DBEBE39001F5C8F /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		14881A201D955595001FBFE0 /* DetailsNewsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNewsItemCell.swift; sourceTree = "<group>"; };
+		14B048A31E6B30C400115F9E /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14B048A71E6B30D200115F9E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../../Library/Developer/Xcode/DerivedData/MMSportsDigest-bijepwiqeclyieahcameazumguxe/Build/Products/Debug-iphonesimulator/Kingfisher/Kingfisher.framework"; sourceTree = "<group>"; };
 		14CBCFAF1D7CAFC700951E8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14E7448E1DC29EFF002CFDA9 /* PrismMediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrismMediaCell.swift; sourceTree = "<group>"; };
 		14E98E291D9D833B0055055D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B048A81E6B30D200115F9E /* Kingfisher.framework in Frameworks */,
 				53790AF3607BFF478F083BC5 /* Pods_MMSportsDigest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +184,7 @@
 		14EDB1201D78ABFF00194AE8 = {
 			isa = PBXGroup;
 			children = (
+				14B048A31E6B30C400115F9E /* Kingfisher.framework */,
 				14EDB12B1D78ABFF00194AE8 /* MMSportsDigest */,
 				14EDB1401D78ABFF00194AE8 /* MMSportsDigestTests */,
 				14EDB14B1D78ABFF00194AE8 /* MMSportsDigestUITests */,
@@ -240,6 +245,7 @@
 		ED9EEA61F49AD8F7F4CA7735 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14B048A71E6B30D200115F9E /* Kingfisher.framework */,
 				892778F543625C47019EBBE5 /* Pods_MMSportsDigest.framework */,
 				0A0CCF2F7BB73E27BA3ECCF3 /* Pods_MMSportsDigestTests.framework */,
 				BC00B6BA7D8F9BDBDED977E3 /* Pods_MMSportsDigestUITests.framework */,
@@ -300,6 +306,7 @@
 				14EDB1451D78ABFF00194AE8 /* Frameworks */,
 				14EDB1461D78ABFF00194AE8 /* Resources */,
 				E17E685698502CE34D3076A8 /* [CP] Copy Pods Resources */,
+				A4951019E1CD5D9960DC50A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,26 +325,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Khant Zaw Ko";
 				TargetAttributes = {
 					14EDB1281D78ABFF00194AE8 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EX9SP8QRW2;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					14EDB13C1D78ABFF00194AE8 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EU2GQT9HEF;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 14EDB1281D78ABFF00194AE8;
 					};
 					14EDB1471D78ABFF00194AE8 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = EU2GQT9HEF;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 14EDB1281D78ABFF00194AE8;
 					};
@@ -405,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		31D90DA1FDC4A186FD544F55 /* [CP] Copy Pods Resources */ = {
@@ -435,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		69D64FAB062B2DAEC325B497 /* [CP] Embed Pods Frameworks */ = {
@@ -466,6 +473,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MMSportsDigest/Pods-MMSportsDigest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4951019E1CD5D9960DC50A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MMSportsDigestUITests/Pods-MMSportsDigestUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E17E685698502CE34D3076A8 /* [CP] Copy Pods Resources */ = {
@@ -510,7 +532,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -593,7 +615,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -601,7 +625,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -645,7 +673,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -653,7 +683,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -691,13 +725,14 @@
 				DEVELOPMENT_TEAM = EX9SP8QRW2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MMSportsDigest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MMSportsDigest/MMSportsDigest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -711,12 +746,13 @@
 				DEVELOPMENT_TEAM = EX9SP8QRW2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MMSportsDigest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MMSportsDigest/MMSportsDigest-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -732,7 +768,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MMSportsDigest.app/MMSportsDigest";
 			};
 			name = Debug;
@@ -749,7 +786,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MMSportsDigest.app/MMSportsDigest";
 			};
 			name = Release;
@@ -765,7 +803,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MMSportsDigest;
 			};
 			name = Debug;
@@ -781,7 +820,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khantzawko.MMSportsDigestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MMSportsDigest;
 			};
 			name = Release;

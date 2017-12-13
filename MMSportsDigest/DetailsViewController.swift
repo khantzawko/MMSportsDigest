@@ -60,7 +60,7 @@ class DetailsViewController: UITableViewController, UIWebViewDelegate {
         
         
         let imageRef = "images/" + self.selectedItems[0].imageUrl
-        let pathReference = FIRStorage.storage().reference().child(imageRef)
+        let pathReference = Storage.storage().reference().child(imageRef)
 
         self.headlineImage.kf.indicatorType = .activity
 
@@ -84,7 +84,7 @@ class DetailsViewController: UITableViewController, UIWebViewDelegate {
     }
 
     
-    func imageTapped(sender: UITapGestureRecognizer) {
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
         let imageViewer = Optik.imageViewer(withImages: [headlineImage.image!],
                                             initialImageDisplayIndex: 0,
                                             delegate: self,

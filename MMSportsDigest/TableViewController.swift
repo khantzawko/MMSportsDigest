@@ -19,7 +19,7 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var headlineImage: UIImageView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
-    let newsFeedRef = FIRDatabase.database().reference().child("NewsFeed")
+    let newsFeedRef = Database.database().reference().child("NewsFeed")
     var newsFeedOnStart = 10
     var newsFeedUpdateOnScroll = 5
     var loadFirst: Bool = false
@@ -36,13 +36,13 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         categoryDict = ["Premier League": NewsItem.NewsCategory.bpl,
-                            "La Liga": NewsItem.NewsCategory.laliga,
-                            "Series A": NewsItem.NewsCategory.seriesa,
-                            "Champion League": NewsItem.NewsCategory.championleague,
-                            "Europa League": NewsItem.NewsCategory.europaleague,
-                            "World Cup": NewsItem.NewsCategory.worldcup,
-                            "MNL": NewsItem.NewsCategory.mnl,
-                            "Other": NewsItem.NewsCategory.other]
+                        "La Liga": NewsItem.NewsCategory.laliga,
+                        "Series A": NewsItem.NewsCategory.seriesa,
+                        "Champion League": NewsItem.NewsCategory.championleague,
+                        "Europa League": NewsItem.NewsCategory.europaleague,
+                        "World Cup": NewsItem.NewsCategory.worldcup,
+                        "MNL": NewsItem.NewsCategory.mnl,
+                        "Other": NewsItem.NewsCategory.other]
         
         tableView.rowHeight = UITableViewAutomaticDimension
         headerView = tableView.tableHeaderView
@@ -96,12 +96,12 @@ class TableViewController: UITableViewController {
     
     func updateHeadlineImage() {
         
-        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: 1).observe(.childAdded, with: {(snapshot: FIRDataSnapshot) in
+        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: 1).observe(.childAdded, with: {(snapshot: DataSnapshot) in
             var postDict = snapshot.value as! [String : AnyObject]
             let imageURL = postDict["imageUrl"] as! String
             let imageRef = "images/" + imageURL
             
-            let pathReference = FIRStorage.storage().reference().child(imageRef)
+            let pathReference = Storage.storage().reference().child(imageRef)
             self.headlineImage.kf.indicatorType = .activity
 
             
@@ -119,7 +119,7 @@ class TableViewController: UITableViewController {
     
     func updateNewsFeedOnLoad() {
         
-        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(newsFeedOnStart)).observe(.childAdded, with: {(snapshot: FIRDataSnapshot) in
+        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(newsFeedOnStart)).observe(.childAdded, with: {(snapshot: DataSnapshot) in
             
             var postDict = snapshot.value as! [String : AnyObject]
             
@@ -141,8 +141,7 @@ class TableViewController: UITableViewController {
         
         newsFeedOnStart = items.count + newsFeedUpdateOnScroll
         
-        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(newsFeedOnStart)).observeSingleEvent(of: .value, with: {(snapshot: FIRDataSnapshot) in
-            
+        newsFeedRef.queryOrdered(byChild: "timestamp").queryLimited(toFirst: UInt(newsFeedOnStart)).observeSingleEvent(of: .value, with: {(snapshot: DataSnapshot) in
             var newPage = [NewsItem]()
             
             if snapshot.exists(){
@@ -270,7 +269,7 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "detailsView" {
-            
+
             let indexPath: IndexPath = self.tableView.indexPathForSelectedRow!
             let dvc: DetailsViewController = segue.destination as! DetailsViewController
             dvc.selectedItems = [items[(indexPath as NSIndexPath).row]]
